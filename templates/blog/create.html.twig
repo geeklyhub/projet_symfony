@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+{% form_theme formArticle 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+
+    <p><hr><h1>
+    {% if editMode %}
+    Modifier l'article
+    {% else %}
+    Création d'un article
+    {% endif %}
+</h1></p>
+        {#j'aurais pu utiliser le form start et form end pour afficher des choses dans un ordre {{ form_start(formArticle) }}#}
+    {{ form_start(formArticle) }}
+    {{ form_row(formArticle.title, {'attr':{'placeholder':"Titre de l'article"}}) }}
+    {{ form_row(formArticle.content,{'attr':{'placeholder':"Contenu de l'article"}}) }}
+    {{ form_row(formArticle.image,{'attr':{'placeholder':"URL de l'image"}}) }}
+    <br>
+    <button type="submit" class="btn btn-success">
+        {% if editMode %}
+        Mettre à jour
+        {% else %}
+        Ajouter l'article
+        {% endif %}
+    </button>
+
+{% endblock %}
